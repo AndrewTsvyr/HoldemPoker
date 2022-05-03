@@ -1,18 +1,19 @@
 #include <iostream>
 #include "cards.h"
+#define DEBUG
 
 enum class card_rank
 {
-    PIKE,
-    CHRIST,
+    SPADES,
+    CLUBS,
     HEART,
-    BUBY
+    DIAMONDS,
 };
 
 enum class card_value
 {
     
-    TWO,
+    TWO = 2,
     THREE,
     FOUR,
     FIVE,
@@ -21,10 +22,10 @@ enum class card_value
     EIGHT,
     NINE,
     TEN,
-    JVALET,
+    JACK,
     QUEEN,
     KING,
-    TUZ,
+    ACE,
 
 };
 
@@ -45,9 +46,9 @@ struct card
 void deck_of_cards::deck_create()
 {
     card deck_fill[52];
-    for (int card_rank_all = (int)card_rank::PIKE; card_rank_all <= (int)card_rank::BUBY; card_rank_all++)
+    for (int card_rank_all = (int)card_rank::SPADES; card_rank_all <= (int)card_rank::DIAMONDS; card_rank_all++)
     {
-        for (int card_value_all = (int)card_value::TWO; card_value_all <= (int)card_value::TUZ; card_value_all++)
+        for (int card_value_all = (int)card_value::TWO; card_value_all <= (int)card_value::ACE; card_value_all++)
         {
             card c;
             c.rank = (card_rank)card_rank_all;
@@ -55,66 +56,74 @@ void deck_of_cards::deck_create()
     
             if (c.value == card_value::TWO)
             {
-                c.points = 2;
+                c.points = static_cast<int>(card_value::TWO);
             }
 
             else if (c.value == card_value::THREE)
             {
-                c.points = 3;
+                c.points = static_cast<int>(card_value::THREE);
             }
         
             else if (c.value == card_value::FOUR)
             {
-               c.points = 4;
+                c.points = static_cast<int>(card_value::FOUR);
             }               
             else if (c.value == card_value::FIVE)
             {
-                c.points = 5;
+                c.points = static_cast<int>(card_value::FIVE);
             }
             else if (c.value == card_value::SIX)
             {
-                c.points = 6;
+                c.points = static_cast<int>(card_value::SIX);
             }
             else if (c.value == card_value::SEVEN)
             {
-                c.points = 7;
+                c.points = static_cast<int>(card_value::SEVEN);
             }
             else if (c.value == card_value::EIGHT)
             {
-                c.points = 8;
+                c.points = static_cast<int>(card_value::EIGHT);
             }
             else if (c.value == card_value::NINE)
             {
-                c.points = 9;
+                c.points = static_cast<int>(card_value::NINE);
             }
                 else if (c.value == card_value::TEN)
             {
-                c.points = 10;
+                c.points = static_cast<int>(card_value::TEN);
             }
-                else if (c.value == card_value::JVALET)
+                else if (c.value == card_value::JACK)
             {
-                c.points = 11;
+                c.points = static_cast<int>(card_value::JACK);
             }
                 else if (c.value == card_value::QUEEN)
             {
-                c.points = 12;
+                c.points = static_cast<int>(card_value::QUEEN);
             }
                 else if (c.value == card_value::KING)
             {
-                c.points = 13;
+                c.points = static_cast<int>(card_value::KING);
             }
-                else if (c.value == card_value::TUZ)
+                else if (c.value == card_value::ACE)
             {
-                c.points = 14;
+                c.points = static_cast<int>(card_value::ACE);
             }
 
             int card_number = (13*card_rank_all) + card_value_all; //poryadkovy nomer karty
             deck_fill[card_number] = c;
+
+            #ifdef DEBUG
+
+            std::cout << static_cast<int>(c.rank) << " #generate card# " << static_cast<int>(c.value) << std::endl;
+
+            #endif
+
+            
         }
     }
 };
 
-// schet mastey i nominala v masive idet s 0 (!!!)
+
 
   
 
