@@ -36,6 +36,8 @@ struct card
     int points;
 };
 
+
+
 /*__2__3__4__5__6__7__8__9__10__J__Q__K__T__
 =P|2P==3P=4P=5P=6P=7P=8P=9P=10P=JP=QP=KP=TP= ||
 =C|2P==3C=4C=5C=6C=7C=8C=9C=10C=JC=QC=KC=TC= || massiv takogo vida budet
@@ -46,9 +48,9 @@ struct card
 void deck_of_cards::deck_create()
 {
     card deck_fill[52];
-    for (int card_rank_all = (int)card_rank::SPADES; card_rank_all <= (int)card_rank::DIAMONDS; card_rank_all++)
+    for (int card_rank_all = static_cast<int>(card_rank::SPADES); card_rank_all <= static_cast<int>(card_rank::DIAMONDS); card_rank_all++)
     {
-        for (int card_value_all = (int)card_value::TWO; card_value_all <= (int)card_value::ACE; card_value_all++)
+        for (int card_value_all = static_cast<int>(card_value::TWO); card_value_all <= static_cast<int>(card_value::ACE); card_value_all++)
         {
             card c;
             c.rank = (card_rank)card_rank_all;
@@ -109,7 +111,8 @@ void deck_of_cards::deck_create()
                 c.points = static_cast<int>(card_value::ACE);
             }
 
-            int card_number = (13*card_rank_all) + card_value_all; //poryadkovy nomer karty
+
+            int card_number = (13*card_rank_all) + card_value_all - 2; //poryadkovy nomer karty
             deck_fill[card_number] = c;
 
             #ifdef DEBUG
