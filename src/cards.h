@@ -53,6 +53,7 @@ public:
     std::string value_to_string(card_value value);
     int to_int(card_value value);
     int to_int(card_rank value);
-    
+
+    void show_cards();
     void example_of_use(); //example of use timer and rnd
 };

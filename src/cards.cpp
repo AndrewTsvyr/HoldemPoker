@@ -74,6 +74,17 @@ std::string deck_of_cards::value_to_string(card_value value)
     }
 }
 
+void deck_of_cards::show_cards()
+{
+    std::cout << "--------SHOW DECK--------" << std::endl;
+    for(int i = 0; i < cards.size(); i++)
+    {
+        std::cout << "[" << i << "] - " 
+        << value_to_string(cards[i].value) << "|" << rank_to_string(cards[i].rank) << std::endl;
+    }
+    std::cout << "--------------------------" << std::endl;
+}
+
 int deck_of_cards::to_int(card_value value)
 {
     return static_cast<int>(value);
@@ -91,8 +102,8 @@ void deck_of_cards::example_of_use() // TODO: can delete
     time.delay_milisec(1000); 
 
     // return random number from 1 to 200
-    std::cout << "Random number from 1 to 200: " << rnd.get_random(1, 200) << std::endl; 
+    std::cout << "Random number from 1 to 200: " << rnd.get_random(1, 200) << std::endl;
+
+    //show deck
+    show_cards(); 
 }
-
-  
-
