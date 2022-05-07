@@ -36,7 +36,7 @@ void deck_of_cards::deck_create()
                 case card_value::KING:  c.points = to_int(card_value::KING);    break;
                 case card_value::ACE:   c.points = to_int(card_value::ACE);     break;
                 default: std::cout <<   "Undefind bihavior. Incorrect card value: \n" <<
-                                        "rank(" << type_to_string(c.rank) << ")\n" <<
+                                        "rank(" << rank_to_string(c.rank) << ")\n" <<
                                         "value(" << to_int(c.value) << ")" << std::endl; break;
             }
 
@@ -44,13 +44,13 @@ void deck_of_cards::deck_create()
             cards.push_back(c);
 
             #ifdef DEBUG
-            std::cout << type_to_string(c.rank) << " #generate card# " << to_int(c.value) << std::endl;
+            std::cout << rank_to_string(c.rank) << " #generate card# " << value_to_string(c.value) << std::endl;
             #endif
         }
     }
 };
 
-std::string deck_of_cards::type_to_string(card_rank rank)
+std::string deck_of_cards::rank_to_string(card_rank rank)
 {
     switch (rank)
     {
@@ -59,6 +59,18 @@ std::string deck_of_cards::type_to_string(card_rank rank)
     case card_rank::HEART:      return "HEART("    + std::to_string(to_int(rank)) + ")";
     case card_rank::DIAMONDS:   return "DIAMONDS(" + std::to_string(to_int(rank)) + ")";
     default:                    return "UNKNOWN("  + std::to_string(to_int(rank)) + ")";
+    }
+}
+
+std::string deck_of_cards::value_to_string(card_value value)
+{
+    switch (value)
+    {
+    case card_value::JACK:      return "JACK(" + std::to_string(to_int(value)) + ")";
+    case card_value::QUEEN:     return "QUEEN(" + std::to_string(to_int(value)) + ")";
+    case card_value::KING:      return "KING(" + std::to_string(to_int(value)) + ")";
+    case card_value::ACE:       return "ACE(" + std::to_string(to_int(value)) + ")";
+    default:                    return std::to_string(to_int(value));
     }
 }
 
