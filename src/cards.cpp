@@ -1,4 +1,6 @@
 #include <iostream>
+#include <algorithm>
+#include <iterator>
 #include "cards.h"
 #define DEBUG
 
@@ -74,6 +76,13 @@ std::string deck_of_cards::value_to_string(card_value value)
     }
 }
 
+void deck_of_cards::shuffle_deck()
+{
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(cards.begin(), cards.end(), g);
+}
+
 void deck_of_cards::show_cards()
 {
     std::cout << "--------SHOW DECK--------" << std::endl;
@@ -105,5 +114,7 @@ void deck_of_cards::example_of_use() // TODO: can delete
     std::cout << "Random number from 1 to 200: " << rnd.get_random(1, 200) << std::endl;
 
     //show deck
+    show_cards();
+    shuffle_deck();
     show_cards(); 
 }

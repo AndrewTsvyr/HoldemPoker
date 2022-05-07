@@ -49,8 +49,12 @@ private:
 
 public:
     void deck_create();
+    
     std::string rank_to_string(card_rank rank);
     std::string value_to_string(card_value value);
+    
+    void shuffle_deck();
+
     int to_int(card_value value);
     int to_int(card_rank value);
 
