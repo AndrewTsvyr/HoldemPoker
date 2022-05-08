@@ -12,10 +12,16 @@
 =B|2P==3P=4P=5P=6P=7P=8P=9P=10P=JP=QP=KP=TP= ||
 ===*/
 
+deck_of_cards::deck_of_cards()
+{
+    deck_create();
+}
+
+
 void deck_of_cards::deck_create()
 {
     for (int card_rank_all = to_int(card_rank::SPADES); card_rank_all <= to_int(card_rank::DIAMONDS); card_rank_all++)
-    {
+     {
         for (int card_value_all = to_int(card_value::TWO); card_value_all <= to_int(card_value::ACE); card_value_all++)
         {
             card c;
@@ -49,8 +55,10 @@ void deck_of_cards::deck_create()
             std::cout << rank_to_string(c.rank) << " #generate card# " << value_to_string(c.value) << std::endl;
             #endif
         }
-    }
-};
+     }
+}
+
+
 
 std::string deck_of_cards::rank_to_string(card_rank rank)
 {
@@ -122,37 +130,12 @@ int deck_of_cards::to_int(card_rank value)
     return static_cast<int>(value);
 }
 
-void deck_of_cards::board_create()
-{
-    for(int i = 0; i < 5; i++)
-    {
-        board.push_back(cards[i]);
-        
-        #ifdef DEBUG
-
-        std::cout << "[" << i << "] - " <<
-        #endif
-        value_to_string(board[i].value)
-        #ifdef DEBUG
-        << "|" << 
-        #else 
-        ;
-        #endif
-        rank_to_string(board[i].rank)
-        #ifdef DEBUG
-        << std::endl;
-        #else 
-        ;
-        #endif
-    };
-}
-
 void deck_of_cards::show_flop()
 {
     for(int i = 0; i < 3; i++)
     {
         std::cout << "[ " 
-        << value_to_string(board[i].value) << " | " << rank_to_string(board[i].rank) 
+        << value_to_string(cards[i].value) << " | " << rank_to_string(cards[i].rank) 
         << " ]" << std::endl;
     };
 }  
@@ -160,7 +143,7 @@ void deck_of_cards::show_flop()
 void deck_of_cards::show_river()
 {
     std::cout << "[ " 
-    << value_to_string(board[3].value) << " | " << rank_to_string(board[3].rank) 
+    << value_to_string(cards[3].value) << " | " << rank_to_string(cards[3].rank) 
     << " ]" << std::endl;
 
 }
@@ -168,7 +151,7 @@ void deck_of_cards::show_river()
 void deck_of_cards::show_tern()
 {
     std::cout << "[ " 
-    << value_to_string(board[4].value) << " | " << rank_to_string(board[4].rank) 
+    << value_to_string(cards[4].value) << " | " << rank_to_string(cards[4].rank) 
     << " ]" << std::endl;
 
 }
@@ -186,8 +169,8 @@ void deck_of_cards::example_of_use() // TODO: can delete
     show_cards();
     shuffle_deck();
     show_cards(); 
-    board_create();
     show_flop();
     show_river();
     show_tern();
 }
+

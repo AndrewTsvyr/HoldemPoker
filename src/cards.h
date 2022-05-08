@@ -60,29 +60,32 @@ struct card
 struct deck_of_cards
 {
     private:
-    timer     time;
-    randomize rnd;
+
+    timer             time;
+    randomize         rnd;
+    std::vector<card> cards;
+
     public:
 
-    std::vector<card> cards;
-    std::vector<card> board;
-    
+    deck_of_cards();
     void deck_create();
-    
-    std::string rank_to_string(card_rank rank);
-    std::string value_to_string(card_value value);
 
     void shuffle_deck();
 
-    int to_int(card_value value);
-    int to_int(card_rank value);
-
-    void board_create(); // stages.cpp start
-    void combos_calc();
     void show_flop();
     void show_river();
-    void show_tern(); // stages.cpp end
+    void show_tern();
+    
+    std::string rank_to_string  (card_rank  rank);
+    std::string value_to_string (card_value value);
+    int to_int(card_value value);
+    int to_int(card_rank  value);
+
+    #ifdef DEBUG
 
     void show_cards();
     void example_of_use(); //example of use timer and rnd
+
+    #endif
+
 };
