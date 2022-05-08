@@ -19,8 +19,8 @@ void deck_of_cards::deck_create()
         for (int card_value_all = to_int(card_value::TWO); card_value_all <= to_int(card_value::ACE); card_value_all++)
         {
             card c;
-            c.rank = (card_rank)card_rank_all;
-            c.value = (card_value)card_value_all;
+            c.rank =  (card_rank)  card_rank_all;
+            c.value = (card_value) card_value_all;
 
             switch(c.value)
             {
@@ -43,7 +43,7 @@ void deck_of_cards::deck_create()
             }
 
             int card_number = (13*card_rank_all) + card_value_all - 2;
-            cards.push_back(c);
+            _cards.push_back(c);
         }
      }
 }
@@ -94,11 +94,11 @@ void deck_of_cards::shuffle_deck()
 {
     std::random_device rd;
     std::mt19937 g(rd());
-    std::shuffle(cards.begin(), cards.end(), g);
-    for(int i = 0; i < cards.size(); i++)
+    std::shuffle(_cards.begin(), _cards.end(), g);
+    for(int i = 0; i < _cards.size(); i++)
     {
-        value_to_string (cards[i].value); 
-        rank_to_string  (cards[i].rank); 
+        value_to_string (_cards[i].value); 
+        rank_to_string  (_cards[i].rank); 
     }
 }
 
@@ -107,7 +107,7 @@ void deck_of_cards::show_flop()
     for(int i = 0; i < 3; i++)
     {
         std::cout << "[ " 
-        << value_to_string(cards[i].value) << " | " << rank_to_string(cards[i].rank) 
+        << value_to_string(_cards[i].value) << " | " << rank_to_string(_cards[i].rank) 
         << " ]" << std::endl;
     };
 }  
@@ -115,7 +115,7 @@ void deck_of_cards::show_flop()
 void deck_of_cards::show_river()
 {
     std::cout << "[ " 
-    << value_to_string(cards[3].value) << " | " << rank_to_string(cards[3].rank) 
+    << value_to_string(_cards[3].value) << " | " << rank_to_string(_cards[3].rank) 
     << " ]" << std::endl;
 
 }
@@ -123,7 +123,7 @@ void deck_of_cards::show_river()
 void deck_of_cards::show_tern()
 {
     std::cout << "[ " 
-    << value_to_string(cards[4].value) << " | " << rank_to_string(cards[4].rank) 
+    << value_to_string(_cards[4].value) << " | " << rank_to_string(_cards[4].rank) 
     << " ]" << std::endl;
 
 }
@@ -137,11 +137,11 @@ void deck_of_cards::show_tern()
 void deck_of_cards::show_cards()
 {
     std::cout << "--------SHOW DECK--------" << std::endl;
-    for(int i = 0; i < cards.size(); i++)
+    for(int i = 0; i < _cards.size(); i++)
     {
         std::cout << "[" << i << "] - " << 
-        value_to_string (cards[i].value) << "|" << 
-        rank_to_string  (cards[i].rank)  << std::endl;
+        value_to_string (_cards[i].value) << "|" << 
+        rank_to_string  (_cards[i].rank)  << std::endl;
     }
     std::cout << "--------------------------" << std::endl;
 }
@@ -150,10 +150,10 @@ void deck_of_cards::example_of_use() // TODO: can delete
 {
     // do delay on 1s or 1000milsec
     std::cout << "1sec delay..." << std::endl;
-    time.delay_milisec(1000); 
+    _time.delay_milisec(1000); 
 
     // return random number from 1 to 200
-    std::cout << "Random number from 1 to 200: " << rnd.get_random(1, 200) << std::endl;
+    std::cout << "Random number from 1 to 200: " << _rnd.get_random(1, 200) << std::endl;
 
     //show deck
     show_cards();

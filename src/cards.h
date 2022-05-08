@@ -58,12 +58,6 @@ struct card
 
 struct deck_of_cards
 {
-    private:
-
-    timer             time;
-    randomize         rnd;
-    std::vector<card> cards;
-
     public:
 
     ///------------ Struct constructor ------------
@@ -92,5 +86,14 @@ struct deck_of_cards
     void example_of_use();
 
     ///--------------------------------------------
+    
+    private:
 
+    ///============================================
+    
+    timer             _time;
+    randomize         _rnd;
+    std::vector<card> _cards;
+
+    ///============================================
 };
