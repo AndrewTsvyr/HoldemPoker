@@ -3,20 +3,14 @@
 #include <iterator>
 #include "cards.h"
 
-
-
-/*__2__3__4__5__6__7__8__9__10__J__Q__K__T__
-=P|2P==3P=4P=5P=6P=7P=8P=9P=10P=JP=QP=KP=TP= ||
-=C|2P==3C=4C=5C=6C=7C=8C=9C=10C=JC=QC=KC=TC= || massiv takogo vida budet
-=H|2H==3H=4H=5H=6H=7H=8H=9H=10H=JH=QH=KH=TH= || sozdan dalee v deck_create
-=B|2P==3P=4P=5P=6P=7P=8P=9P=10P=JP=QP=KP=TP= ||
-===*/
+///------------------------------------------------------------------
+///----------------------- Struct constructor -----------------------
+///------------------------------------------------------------------
 
 deck_of_cards::deck_of_cards()
 {
     deck_create();
 }
-
 
 void deck_of_cards::deck_create()
 {
@@ -48,17 +42,15 @@ void deck_of_cards::deck_create()
                                         "value(" << to_int(c.value) << ")" << std::endl; break;
             }
 
-            int card_number = (13*card_rank_all) + card_value_all - 2; //poryadkovy nomer karty
+            int card_number = (13*card_rank_all) + card_value_all - 2;
             cards.push_back(c);
-
-            #ifdef DEBUG
-            std::cout << rank_to_string(c.rank) << " #generate card# " << value_to_string(c.value) << std::endl;
-            #endif
         }
      }
 }
 
-
+///------------------------------------------------------------------
+///----------------------- Types convertation -----------------------
+///------------------------------------------------------------------
 
 std::string deck_of_cards::rank_to_string(card_rank rank)
 {
@@ -84,42 +76,6 @@ std::string deck_of_cards::value_to_string(card_value value)
     }
 }
 
-void deck_of_cards::shuffle_deck()
-{
-    std::random_device rd;
-    std::mt19937 g(rd());
-    std::shuffle(cards.begin(), cards.end(), g);
-}
-
-void deck_of_cards::show_cards()
-{
-    
-    #ifdef DEBUG
-    std::cout << "--------SHOW DECK--------" << std::endl;
-    #endif 
-    for(int i = 0; i < cards.size(); i++)
-    {
-        #ifdef DEBUG
-        std::cout << "[" << i << "] - " << 
-        #endif
-        value_to_string(cards[i].value) 
-        #ifdef DEBUG
-        << "|" << 
-        #else
-        ;
-        #endif
-        rank_to_string(cards[i].rank) 
-        #ifdef DEBUG
-        << std::endl;
-        #else
-        ;
-        #endif
-    }
-    #ifdef DEBUG
-    std::cout << "--------------------------" << std::endl;
-    #endif
-}
-
 int deck_of_cards::to_int(card_value value)
 {
     return static_cast<int>(value);
@@ -128,6 +84,22 @@ int deck_of_cards::to_int(card_value value)
 int deck_of_cards::to_int(card_rank value)
 {
     return static_cast<int>(value);
+}
+
+///------------------------------------------------------------------
+///------------------------- Stages of game -------------------------
+///------------------------------------------------------------------
+
+void deck_of_cards::shuffle_deck()
+{
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(cards.begin(), cards.end(), g);
+    for(int i = 0; i < cards.size(); i++)
+    {
+        value_to_string (cards[i].value); 
+        rank_to_string  (cards[i].rank); 
+    }
 }
 
 void deck_of_cards::show_flop()
@@ -156,6 +128,24 @@ void deck_of_cards::show_tern()
 
 }
 
+///------------------------------------------------------------------
+///--------------------------- DEBUG ONLY ---------------------------
+///------------------------------------------------------------------
+
+#ifdef DEBUG
+
+void deck_of_cards::show_cards()
+{
+    std::cout << "--------SHOW DECK--------" << std::endl;
+    for(int i = 0; i < cards.size(); i++)
+    {
+        std::cout << "[" << i << "] - " << 
+        value_to_string (cards[i].value) << "|" << 
+        rank_to_string  (cards[i].rank)  << std::endl;
+    }
+    std::cout << "--------------------------" << std::endl;
+}
+
 void deck_of_cards::example_of_use() // TODO: can delete
 {
     // do delay on 1s or 1000milsec
@@ -174,3 +164,4 @@ void deck_of_cards::example_of_use() // TODO: can delete
     show_tern();
 }
 
+#endif

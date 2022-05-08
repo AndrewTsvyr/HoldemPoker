@@ -5,6 +5,6 @@ int main()
 {
 
     deck_of_cards deck;
-    deck.example_of_use(); // TODO: can delete
+    deck.example_of_use();
 
 }

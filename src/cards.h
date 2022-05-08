@@ -5,10 +5,9 @@
 #include "timer/timer.h"
 #include "random/random.h"
 
-/*=================================
-=========== combos value ==========
-=================================*/
 
+
+///---- Value for combo  ----
 #define PAIR = 100
 #define DUO_PAIR = 200
 #define SET = 300
@@ -18,7 +17,7 @@
 #define FULL_HOUSE = 700
 #define QUADS = 800
 #define ROYAL_FLUSH = 900
-
+///--------------------------
 
 #define DEBUG
 #define ALLCARDS 52
@@ -67,8 +66,19 @@ struct deck_of_cards
 
     public:
 
+    ///------------ Struct constructor ------------
+
     deck_of_cards();
     void deck_create();
+
+    ///------------ Types convertation ------------
+
+    std::string rank_to_string  (card_rank   rank);
+    std::string value_to_string (card_value value);
+    int         to_int          (card_value value);
+    int         to_int          (card_rank  value);
+
+    ///-------------- Stages of game --------------
 
     void shuffle_deck();
 
@@ -76,16 +86,11 @@ struct deck_of_cards
     void show_river();
     void show_tern();
     
-    std::string rank_to_string  (card_rank  rank);
-    std::string value_to_string (card_value value);
-    int to_int(card_value value);
-    int to_int(card_rank  value);
-
-    #ifdef DEBUG
+    ///---------------- DEBUG ONLY ----------------
 
     void show_cards();
-    void example_of_use(); //example of use timer and rnd
+    void example_of_use();
 
-    #endif
+    ///--------------------------------------------
 
 };
