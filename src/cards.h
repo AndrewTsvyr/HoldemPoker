@@ -1,8 +1,24 @@
 #pragma once
 #include <iostream>
 #include <string>
+//#include "players.h"
 #include "timer/timer.h"
 #include "random/random.h"
+
+/*=================================
+=========== combos value ==========
+=================================*/
+
+#define PAIR = 100
+#define DUO_PAIR = 200
+#define SET = 300
+#define STRAIHGT = 400
+#define FLUSH = 500
+#define STRAIGHT_FLUSH = 600
+#define FULL_HOUSE = 700
+#define QUADS = 800
+#define ROYAL_FLUSH = 900
+
 
 #define DEBUG
 #define ALLCARDS 52
@@ -43,10 +59,10 @@ struct card
 
 struct deck_of_cards
 {
-private:
-    timer time;
+    private:
+    timer     time;
     randomize rnd;
-public:
+    public:
 
     std::vector<card> cards;
     std::vector<card> board;
@@ -55,13 +71,14 @@ public:
     
     std::string rank_to_string(card_rank rank);
     std::string value_to_string(card_value value);
-    
+
     void shuffle_deck();
 
     int to_int(card_value value);
     int to_int(card_rank value);
 
     void board_create(); // stages.cpp start
+    void combos_calc();
     void show_flop();
     void show_river();
     void show_tern(); // stages.cpp end

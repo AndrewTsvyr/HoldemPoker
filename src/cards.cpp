@@ -122,6 +122,57 @@ int deck_of_cards::to_int(card_rank value)
     return static_cast<int>(value);
 }
 
+void deck_of_cards::board_create()
+{
+    for(int i = 0; i < 5; i++)
+    {
+        board.push_back(cards[i]);
+        
+        #ifdef DEBUG
+
+        std::cout << "[" << i << "] - " <<
+        #endif
+        value_to_string(board[i].value)
+        #ifdef DEBUG
+        << "|" << 
+        #else 
+        ;
+        #endif
+        rank_to_string(board[i].rank)
+        #ifdef DEBUG
+        << std::endl;
+        #else 
+        ;
+        #endif
+    };
+}
+
+void deck_of_cards::show_flop()
+{
+    for(int i = 0; i < 3; i++)
+    {
+        std::cout << "[ " 
+        << value_to_string(board[i].value) << " | " << rank_to_string(board[i].rank) 
+        << " ]" << std::endl;
+    };
+}  
+
+void deck_of_cards::show_river()
+{
+    std::cout << "[ " 
+    << value_to_string(board[3].value) << " | " << rank_to_string(board[3].rank) 
+    << " ]" << std::endl;
+
+}
+
+void deck_of_cards::show_tern()
+{
+    std::cout << "[ " 
+    << value_to_string(board[4].value) << " | " << rank_to_string(board[4].rank) 
+    << " ]" << std::endl;
+
+}
+
 void deck_of_cards::example_of_use() // TODO: can delete
 {
     // do delay on 1s or 1000milsec
@@ -136,4 +187,7 @@ void deck_of_cards::example_of_use() // TODO: can delete
     shuffle_deck();
     show_cards(); 
     board_create();
+    show_flop();
+    show_river();
+    show_tern();
 }

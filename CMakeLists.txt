@@ -6,7 +6,6 @@ set(SOURCES
     src/main.cpp
     src/cards.cpp    
     src/players.cpp
-    src/stages.cpp
     src/timer/timer.cpp
     src/random/random.cpp
 )
