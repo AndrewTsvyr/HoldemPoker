@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <iterator>
 #include "cards.h"
-#define DEBUG
+
 
 
 /*__2__3__4__5__6__7__8__9__10__J__Q__K__T__
@@ -85,13 +85,31 @@ void deck_of_cards::shuffle_deck()
 
 void deck_of_cards::show_cards()
 {
+    
+    #ifdef DEBUG
     std::cout << "--------SHOW DECK--------" << std::endl;
+    #endif 
     for(int i = 0; i < cards.size(); i++)
     {
-        std::cout << "[" << i << "] - " 
-        << value_to_string(cards[i].value) << "|" << rank_to_string(cards[i].rank) << std::endl;
+        #ifdef DEBUG
+        std::cout << "[" << i << "] - " << 
+        #endif
+        value_to_string(cards[i].value) 
+        #ifdef DEBUG
+        << "|" << 
+        #else
+        ;
+        #endif
+        rank_to_string(cards[i].rank) 
+        #ifdef DEBUG
+        << std::endl;
+        #else
+        ;
+        #endif
     }
+    #ifdef DEBUG
     std::cout << "--------------------------" << std::endl;
+    #endif
 }
 
 int deck_of_cards::to_int(card_value value)
@@ -117,4 +135,5 @@ void deck_of_cards::example_of_use() // TODO: can delete
     show_cards();
     shuffle_deck();
     show_cards(); 
+    board_create();
 }

@@ -4,7 +4,8 @@ project(poker)
 
 set(SOURCES
     src/main.cpp
-    src/cards.cpp
+    src/cards.cpp    
+    src/players.cpp
     src/stages.cpp
     src/timer/timer.cpp
     src/random/random.cpp
@@ -12,7 +13,7 @@ set(SOURCES
 
 set(HEADERS 
     src/cards.h
-    src/stages.h
+    src/players.h
     src/timer/timer.h
     src/random/random.h
 )

@@ -4,6 +4,7 @@
 #include "timer/timer.h"
 #include "random/random.h"
 
+#define DEBUG
 #define ALLCARDS 52
 
 enum class card_rank
@@ -45,9 +46,11 @@ struct deck_of_cards
 private:
     timer time;
     randomize rnd;
-    std::vector<card> cards;
-
 public:
+
+    std::vector<card> cards;
+    std::vector<card> board;
+    
     void deck_create();
     
     std::string rank_to_string(card_rank rank);
@@ -57,6 +60,11 @@ public:
 
     int to_int(card_value value);
     int to_int(card_rank value);
+
+    void board_create(); // stages.cpp start
+    void show_flop();
+    void show_river();
+    void show_tern(); // stages.cpp end
 
     void show_cards();
     void example_of_use(); //example of use timer and rnd
