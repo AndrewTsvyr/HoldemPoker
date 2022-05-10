@@ -8,26 +8,29 @@
 
 struct player
 {
-    std::string name ="unnamed";
-    int money;
-    int total_bet;
-    int bet;
-    int points;
+    public:
+
+    player(std::string _name);
+    
+    private:
+    std::string _name;
+    int         _money;
+    int         _total_bet;
+    int         _bet;
+    int         _points;
 };
-
-
 
 struct room
 {
     
+    public:
+
+
+    void your_name();
+    void players_count();
+    
+    private:
     std::vector<player> players;
-    
-    void player_count();
-    void create_name();
-
-    
-
-
 };
 
 

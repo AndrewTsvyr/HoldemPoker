@@ -146,7 +146,7 @@ void deck_of_cards::show_cards()
     std::cout << "--------------------------" << std::endl;
 }
 
-void deck_of_cards::example_of_use() // TODO: can delete
+/*void deck_of_cards::example_of_use() // TODO: can delete
 {
     // do delay on 1s or 1000milsec
     std::cout << "1sec delay..." << std::endl;
@@ -159,9 +159,15 @@ void deck_of_cards::example_of_use() // TODO: can delete
     show_cards();
     shuffle_deck();
     show_cards(); 
+    room::your_name();
     show_flop();
     show_river();
     show_tern();
-}
+}*/
 
 #endif
+
+std::vector<card> deck_of_cards::get_deck()
+{
+    return _cards;
+}

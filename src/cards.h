@@ -79,15 +79,19 @@ struct deck_of_cards
     void show_flop();
     void show_river();
     void show_tern();
-    
+
     ///---------------- DEBUG ONLY ----------------
 
     void show_cards();
     void example_of_use();
 
+    ///------------------ Get Set -----------------
+
+    std::vector<card> get_deck();
+
     ///--------------------------------------------
-    
-    private:
+
+                                           private:
 
     ///============================================
     
