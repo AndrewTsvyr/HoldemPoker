@@ -7,17 +7,7 @@
 
 
 
-///---- Value for combo  ----
-#define PAIR = 100
-#define DUO_PAIR = 200
-#define SET = 300
-#define STRAIHGT = 400
-#define FLUSH = 500
-#define STRAIGHT_FLUSH = 600
-#define FULL_HOUSE = 700
-#define QUADS = 800
-#define ROYAL_FLUSH = 900
-///--------------------------
+
 
 #define DEBUG
 #define ALLCARDS 52
@@ -59,6 +49,10 @@ struct card
 struct deck_of_cards
 {
     public:
+    ///------------- Getters/Setters --------------
+
+    card get_card(int card_number) {return _cards[card_number];}
+
 
     ///------------ Struct constructor ------------
 

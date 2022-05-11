@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <iterator>
 #include "cards.h"
+#include "players.h"
 
 ///------------------------------------------------------------------
 ///----------------------- Struct constructor -----------------------
@@ -166,8 +167,3 @@ void deck_of_cards::show_cards()
 }*/
 
 #endif
-
-std::vector<card> deck_of_cards::get_deck()
-{
-    return _cards;
-}

@@ -11,10 +11,9 @@ int main()
     deck.show_cards();
     deck.shuffle_deck();
     deck.show_cards(); 
-    r.your_name();
-    r.players_count();
+    r.add_player_name();
+    r.create_enemies();
     deck.show_flop();
     deck.show_river();
     deck.show_tern();
-
 }
