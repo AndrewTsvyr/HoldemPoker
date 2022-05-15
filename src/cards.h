@@ -66,10 +66,10 @@ struct deck_of_cards
 
     ///------------ Types convertation ------------
 
-    std::string rank_to_string  (card_rank   rank);
-    std::string value_to_string (card_value value);
-    int         to_int          (card_value value);
-    int         to_int          (card_rank  value);
+    static std::string rank_to_string  (card_rank   rank);
+    static std::string value_to_string (card_value value);
+    static int         to_int          (card_value value);
+    static int         to_int          (card_rank  value);
 
     ///-------------- Stages of game --------------
 

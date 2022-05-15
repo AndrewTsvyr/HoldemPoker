@@ -21,4 +21,10 @@ int main()
     application app("cfg.json");
     app.get_room()->create_enemies();
     app.get_room()->show_players();
+    app.get_room()->on_turn();
+    app.get_room()->on_turn();
+    app.get_room()->on_turn();
+    app.get_room()->on_turn();
+    app.get_room()->on_turn();
+    app.get_room()->on_turn();
 }
