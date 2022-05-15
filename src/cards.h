@@ -51,11 +51,11 @@ struct deck_of_cards
     public:
     ///------------- Getters/Setters --------------
 
-    card get_card(int card_number) {return _cards[card_number];}
+    card get_card() { card cards = _cards.back(); _cards.pop_back() ; return cards;  }
 
 
     ///------------ Struct constructor ------------
-
+    
     deck_of_cards();
     void deck_create();
 
@@ -81,7 +81,6 @@ struct deck_of_cards
 
     ///------------------ Get Set -----------------
 
-    std::vector<card> get_deck();
 
     ///--------------------------------------------
 

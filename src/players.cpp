@@ -7,17 +7,13 @@
 #define WRONG_TYPE -1
 
 
-player::player(std::string name, int first_card, int sec_card): 
+player::player(std::string name, card first_card, card sec_card): 
 _name(name),
 _money(1000), 
 _total_bet(0), 
 _bet(0), 
 _points(0)
-{
-    deck_of_cards deck;
-    _hand.push_back (deck.get_card(first_card));
-    _hand.push_back (deck.get_card(sec_card));
-}
+{}
 
 
 
@@ -26,16 +22,18 @@ void room::add_player_name()
     std::string your_name;
     std::cout << "Type your name: ";
     std::cin >> your_name; 
-    player u(your_name, 5, 6);
+    player u(your_name, get_card_deck().get_card(), get_card_deck().get_card());
     _players.push_back(u);
 }
 
 void room::create_enemies()
 {
     int count;
-    player en1("Andrew", 7, 8);
-    player en2("Egor", 9, 10);
-    player en3("Dmitry", 11, 12);
+    player en1("Andrew", get_card_deck().get_card(), get_card_deck().get_card());
+    player en2("Egor", get_card_deck().get_card(), get_card_deck().get_card());
+    player en3("Dmitry", get_card_deck().get_card(), get_card_deck().get_card());
+    
+
     std::cout << "How many enemies you whant?" << std::endl;
     std::cout << " [1]        [2]        [3]" << std::endl;
     do 

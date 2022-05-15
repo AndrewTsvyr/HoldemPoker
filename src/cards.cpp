@@ -11,6 +11,7 @@
 deck_of_cards::deck_of_cards()
 {
     deck_create();
+    shuffle_deck();
 }
 
 void deck_of_cards::deck_create()

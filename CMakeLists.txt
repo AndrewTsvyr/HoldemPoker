@@ -8,6 +8,7 @@ set(SOURCES
     src/players.cpp
     src/timer/timer.cpp
     src/random/random.cpp
+    src/game.cpp
 )
 
 set(HEADERS 
@@ -15,6 +16,7 @@ set(HEADERS
     src/players.h
     src/timer/timer.h
     src/random/random.h
+    src/game.h
 )
 
 add_executable(poker ${SOURCES} ${HEADERS})
