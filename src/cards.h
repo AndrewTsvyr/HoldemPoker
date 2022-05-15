@@ -51,7 +51,12 @@ struct deck_of_cards
     public:
     ///------------- Getters/Setters --------------
 
-    card get_card() { card cards = _cards.back(); _cards.pop_back() ; return cards;  }
+    card get_card() 
+    { 
+        card cards = _cards.back(); 
+        _cards.pop_back(); 
+        return cards;  
+    }
 
 
     ///------------ Struct constructor ------------
